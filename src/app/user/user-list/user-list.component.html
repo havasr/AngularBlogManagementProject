@@ -1,0 +1,24 @@
+<table class="table-container">
+  <thead>
+    <tr>
+      <th>USERID</th>
+      <th>USERNAME</th>
+      <th>EMAIL</th>
+      <th>CREATION DATE</th>
+      <th>ISACTIVE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of users">
+      <td>{{ item.userId }}</td>
+      <td>{{ item.username }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.creationDate | date}}</td>
+      <td>{{ item.isActive }}</td>
+      <td>
+        <button>Edit</button>
+        <button (click)="handleDeleteClick(item.userId)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
