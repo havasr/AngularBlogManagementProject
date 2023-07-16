@@ -1,6 +1,6 @@
-# PatikaNg
+# Angular Blog Management Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+Bu proje Angular ([Angular CLI](https://github.com/angular/angular-cli) version 16.1.4) kullanılarak geliştirilmiştir. Geleceğim All kapsamında azırlanmış bir blog yönetim sistemidir. Kullanıcı listesi, gönderi listesi, kategori listesi ve yorum listesi olmak üzere 4 listeleme sayfası bulunmaktadır. Sayfalardaki veriler editlenebilir olup, sayfa listeleme özelliği de bulunmaktadır. Uygulama UserService, PostService, CategoryService ve CommentService olmak üzere dört servis üzerinden yönetilmektedir.
 
 ## Development server
 
