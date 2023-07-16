@@ -17,22 +17,21 @@ export class PostService {
   }
 
   deletePost(id: number): void {
-    this.posts = this.posts.filter((post) => post.postId !== id)
+    this.posts = this.posts.filter((post) => post.postId !== id);
   }
 
   findPostById(id: number): Post | undefined {
     return this.posts.find((post) => post.postId === Number(id));
   }
 
-  addPost(post: Post){
+  addPost(post: Post) {
     this.posts.push(post);
   }
 
-  updatePost(updatedPost: Post){
-    this.posts = this.posts.map(post => {
-      if(post.postId === updatedPost.postId)
-      post = updatedPost;
+  updatePost(updatedPost: Post) {
+    this.posts = this.posts.map((post) => {
+      if (post.postId === updatedPost.postId) post = updatedPost;
       return post;
-    })
+    });
   }
 }

@@ -12,20 +12,20 @@ import { CommentAddComponent } from './comments/comment-add/comment-add.componen
 import { CommentDetailComponent } from './comments/comment-detail/comment-detail.component';
 
 const routes: Routes = [
-{path: "userlist", component: UserListComponent},
-{path: "useradd", component: UserAddComponent},
-{path: "postlist", component: PostListComponent },
-{path: "postadd", component: PostAddComponent},
-{path: "postlist/:id", component: PostDetailComponent},
-{path: "categorylist", component: CategoryListComponent},
-{path: "categorylist/:id", component: CategoryDetailComponent},
-{path: "commentlist", component: CommentListComponent},
-{path: "commentadd", component: CommentAddComponent},
-{path: "commentlist/:id", component: CommentDetailComponent}
+  { path: 'userlist', component: UserListComponent },
+  { path: 'useradd', component: UserAddComponent },
+  { path: 'postlist', component: PostListComponent },
+  { path: 'postadd', component: PostAddComponent },
+  { path: 'postlist/:id', component: PostDetailComponent },
+  { path: 'categorylist', component: CategoryListComponent },
+  { path: 'categorylist/:id', component: CategoryDetailComponent },
+  { path: 'commentlist', component: CommentListComponent },
+  { path: 'commentadd', component: CommentAddComponent },
+  { path: 'commentlist/:id', component: CommentDetailComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

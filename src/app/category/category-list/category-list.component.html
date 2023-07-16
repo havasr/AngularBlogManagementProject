@@ -27,19 +27,7 @@
   </tbody>
 </table>
 
-<button (click)="handleAddCategory()">Add Category</button>
-
-<form *ngIf="addCategoryForm">
-  <label for="name">Name</label>
-  <input type="text" [(ngModel)]="newCategoryName" name="name" />
-  <label for="creationDate">Creation Date</label>
-  <input type="date" [(ngModel)]="newCategoryDate" name="creationDate" />
-  <div>
-    <button type="button" (click)="handleSaveClick()">Save</button>
-    <button type="button" (click)="handleCancelClick()">Cancel</button>
-  </div>
-</form>
-
+<div class="bottom-section">
 <div class="pagination" *ngIf="totalPages > 0">
   <button [disabled]="currentPage === 1" (click)="previousPage()">
     Previous
@@ -48,4 +36,27 @@
   <button [disabled]="currentPage === totalPages" (click)="nextPage()">
     Next
   </button>
+</div>
+
+<form *ngIf="addCategoryForm">
+  <label for="name">Name</label>
+  <input type="text" [(ngModel)]="newCategoryName" name="name" />
+  <label for="creationDate">Creation Date</label>
+  <input type="date" [(ngModel)]="newCategoryDate" name="creationDate" />
+  <div>
+    <app-button
+    [buttonText]="'Save'"
+    (onButtonClick)="handleSaveClick()"
+  ></app-button>
+  <app-button
+    [buttonText]="'Cancel'"
+    (onButtonClick)="handleCancelClick()"
+  ></app-button>
+  </div>
+</form>
+
+
+
+<app-button [buttonText]="'Add Category'" (onButtonClick)="handleAddCategory()"></app-button>
+
 </div>

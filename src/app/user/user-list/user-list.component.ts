@@ -28,11 +28,9 @@ export class UserListComponent {
     private postService: PostService,
     private commentService: CommentService
   ) {
-    if (this.userService.getUsers().length === 0)
-      this.userService.setUsers();
+    if (this.userService.getUsers().length === 0) this.userService.setUsers();
     this.users = this.userService.getUsers();
-    if (this.postService.getPosts().length === 0)
-      this.postService.setPosts();
+    if (this.postService.getPosts().length === 0) this.postService.setPosts();
     if (this.commentService.getComments().length === 0)
       this.commentService.setComments();
   }
@@ -41,8 +39,8 @@ export class UserListComponent {
   handleDeleteClick($event: number) {
     if (this.userService.userCount() === 1) {
       alert('You cannot delete the last user.');
-    } else if(this.checkPostsAndComments($event) === true)
-    alert("You cannot delete users with posts or comments.");
+    } else if (this.checkPostsAndComments($event) === true)
+      alert('You cannot delete users with posts or comments.');
     else {
       this.userService.deleteUser($event);
       this.users = this.userService.getUsers();
@@ -50,15 +48,20 @@ export class UserListComponent {
   }
 
   checkPostsAndComments(id: number): boolean {
-    if (this.postService.getPosts().filter((post) => post.userId === id).length !== 0)
+    if (
+      this.postService.getPosts().filter((post) => post.userId === id)
+        .length !== 0
+    )
       return true;
-    else if (this.commentService.getComments().filter((comment) => comment.userId === id).length !== 0)
+    else if (
+      this.commentService
+        .getComments()
+        .filter((comment) => comment.userId === id).length !== 0
+    )
       return true;
-    else
-      return false;
+    else return false;
   }
 
-  
   handleSaveClick() {
     if (this.username == '' || this.email == '' || this.creationDate == '') {
       alert('Please fill in all sections.');
@@ -81,8 +84,6 @@ export class UserListComponent {
     }
   }
 
-  
-
   handleEditClick($event: number): void {
     this.editMode = true;
     this.userId = $event;
@@ -96,7 +97,6 @@ export class UserListComponent {
     this.userId = 0;
   }
 
-  
   ngOnInit() {
     this.pageChanged(this.currentPage);
   }
@@ -128,5 +128,4 @@ export class UserListComponent {
   get totalPages(): number {
     return Math.ceil(this.users.length / this.itemsPerPage);
   }
-
 }

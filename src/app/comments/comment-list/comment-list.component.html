@@ -18,24 +18,34 @@
       <td>{{ item.creationDate }}</td>
       <td>{{ item.isConfirmed }}</td>
       <td class="button">
-      <app-button
-        [buttonText]="'Detail'"
-        [id]="item.commentId"
-        (onButtonClick)="handleDetailClick($event)"
-      ></app-button>
-      <app-button
-        [buttonText]="'Delete'"
-        [id]="item.commentId"
-        (onButtonClick)="handleDeleteClick($event)"
-      ></app-button></td>
+        <app-button
+          [buttonText]="'Detail'"
+          [id]="item.commentId"
+          (onButtonClick)="handleDetailClick($event)"
+        ></app-button>
+        <app-button
+          [buttonText]="'Delete'"
+          [id]="item.commentId"
+          (onButtonClick)="handleDeleteClick($event)"
+        ></app-button>
+      </td>
     </tr>
   </tbody>
 </table>
 
-<button type="button" [routerLink]="'/commentadd'">Add Comment</button>
+<div class="bottom-section">
+  <div class="pagination" *ngIf="totalPages > 0">
+    <button [disabled]="currentPage === 1" (click)="previousPage()">
+      Previous
+    </button>
+    <span>{{ currentPage }} </span>
+    <button [disabled]="currentPage === totalPages" (click)="nextPage()">
+      Next
+    </button>
+  </div>
 
-<div class="pagination" *ngIf="totalPages > 0">
-    <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
-    <span>{{currentPage}} </span>
-    <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+  <app-button
+    [buttonText]="'Add Comment'"
+    [routerLink]="'/commentadd'"
+  ></app-button>
 </div>

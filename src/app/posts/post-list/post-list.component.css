@@ -1,31 +1,50 @@
 table {
-    width: 100%;
-    margin: 40px;
-    padding: 20px;
-    font-size: 16px;
-  }
-  
+  width: 100%;
+  margin: 40px;
+  padding: 20px;
+  font-size: 16px;
+}
+
 th {
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: var(--thirdColor);
-    font-weight: 600;
-    color: white;
-  }
-  
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: var(--thirdColor);
+  font-weight: 600;
+  color: white;
+}
+
 tr {
-    text-align: center;
-  }
-  
+  text-align: center;
+}
+
 tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
+  background-color: #f2f2f2;
+}
+
 td:last-child {
-    display: flex;
-    align-items: center;
-    justify-content: space-center;
-    background-color: white;
-    cursor: pointer;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-center;
+  background-color: white;
+  cursor: pointer;
+}
+
+.bottom-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 40px;
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.pagination > button {
+  color: white;
+  background-color: var(--thirdColor);
+  border-radius: 10px;
+  border: none;
+}

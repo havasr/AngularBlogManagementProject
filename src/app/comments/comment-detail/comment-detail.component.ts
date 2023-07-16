@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-comment-detail',
   templateUrl: './comment-detail.component.html',
-  styleUrls: ['./comment-detail.component.css']
+  styleUrls: ['./comment-detail.component.css'],
 })
 export class CommentDetailComponent {
   comments: Comment[] = [];
@@ -14,21 +14,23 @@ export class CommentDetailComponent {
     commentId: 0,
     postId: 0,
     userId: 0,
-    comment: "",
-    creationDate: "",
-    isConfirmed: false
+    comment: '',
+    creationDate: '',
+    isConfirmed: false,
   };
 
-  constructor(private commentService: CommentService, private activatedRoute: ActivatedRoute){
-
-  }
+  constructor(
+    private commentService: CommentService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       this.comments = this.commentService.getComments();
       const id = params['id'];
-      this.comment = this.comments.find(comment => comment.commentId === Number(id))!;
+      this.comment = this.comments.find(
+        (comment) => comment.commentId === Number(id)
+      )!;
     });
   }
-
 }

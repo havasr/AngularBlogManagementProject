@@ -1,35 +1,48 @@
-<div class="category-card">
-  <div class="category-detail">
-    <div class="header">
-      <p>{{ category.categoryId }}</p>
-      <h1>{{ category.name | uppercase }}</h1>
-    </div>
-    <div class="content">
-      <h2>Creation Date</h2>
-      <p>{{ category.creationDate }}</p>
-    </div>
-    <div class="footer">
-      <div>
-        <p>The {{ category.name }} category contains {{ postCount }} posts.</p>
+<div class="category-detail-component">
+  <div class="category-card">
+    <div class="category-detail">
+      <div class="header">
+        <p>Category Id: {{ category.categoryId }}</p>
+        <h1>{{ category.name | uppercase }}</h1>
+      </div>
+      <div class="content">
+        <h2>Creation Date</h2>
+        <h2>{{ category.creationDate }}</h2>
+      </div>
+      <div class="footer">
+        <div>
+          <p>
+            The {{ category.name }} category contains {{ postCount }} posts.
+          </p>
+        </div>
       </div>
     </div>
   </div>
+
+  <app-button [buttonText]="'Edit'" (click)="handleEditClick()"></app-button>
+  <app-button
+    [buttonText]="'Return'"
+    [routerLink]="'/categorylist'"
+  ></app-button>
+
+  <form *ngIf="editMode">
+    <label for="name">Name</label> <br />
+    <input type="text" [(ngModel)]="updatedCategory.name" name="name" /> <br />
+    <label for="creationDate">Creation Date</label> <br />
+    <input
+      type="date"
+      [(ngModel)]="updatedCategory.creationDate"
+      name="creationDate"
+    />
+    <div>
+      <app-button
+      [buttonText]="'Save'"
+      (onButtonClick)="handleSaveClick()"
+    ></app-button>
+    <app-button
+      [buttonText]="'Cancel'"
+      (onButtonClick)="handleCancelClick()"
+    ></app-button>
+    </div>
+  </form>
 </div>
-
-<button (click)="handleEditClick()">Edit</button>
-<button [routerLink]="'/categorylist'">Return</button>
-
-<form *ngIf="editMode">
-  <label for="name">Name</label> <br />
-  <input type="text" [(ngModel)]="updatedCategory.name" name="name" /> <br />
-  <label for="creationDate">Creation Date</label> <br />
-  <input
-    type="date"
-    [(ngModel)]="updatedCategory.creationDate"
-    name="creationDate"
-  />
-  <div>
-    <button type="button" (click)="handleSaveClick()">Save</button>
-    <button type="button" (click)="handleCancelClick()">Cancel</button>
-  </div>
-</form>

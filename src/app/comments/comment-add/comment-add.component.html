@@ -1,24 +1,34 @@
-<form>
-    <label for="comment">Comment</label>
-    <input type="text" [(ngModel)]="comment.comment" name="comment" />
-    <label for="user">User</label>
-    <select [(ngModel)]="comment.userId" name="user">
-        <option *ngFor="let user of users" [value]="user.userId">{{user.username}}</option>
-    </select> 
-    <label for="post">Post</label>
-    <select [(ngModel)]="comment.postId" name="post">
-        <option *ngFor="let post of posts" [value]="post.postId">{{post.title}}</option>
-    </select> 
-    <label for="creationDate">Creation Date</label>
-    <input type="date" [(ngModel)]="comment.creationDate" name="creationDate" />
-    <label for="isConfirmed">Confirmation State</label>
-    <select [(ngModel)]="comment.isConfirmed" name="isConfirmed">
-      <option [value]="true">Confirmed</option>
-      <option [value]="false">Not Confirmed</option>
-    </select>
-   
-    <div>
-      <button (click)="handleSaveClick()" type="button">Save</button>
-      <button (click)="handleCancelClick()" type="button">Cancel</button>
-    </div>
-  </form>
+<form class="comment-add">
+  <label for="comment">Comment</label>
+  <input type="text" [(ngModel)]="comment.comment" name="comment" />
+  <label for="user">User</label>
+  <select [(ngModel)]="comment.userId" name="user">
+    <option *ngFor="let user of users" [value]="user.userId">
+      {{ user.username }}
+    </option>
+  </select>
+  <label for="post">Post</label>
+  <select [(ngModel)]="comment.postId" name="post">
+    <option *ngFor="let post of posts" [value]="post.postId">
+      {{ post.title }}
+    </option>
+  </select>
+  <label for="creationDate">Creation Date</label>
+  <input type="date" [(ngModel)]="comment.creationDate" name="creationDate" />
+  <label for="isConfirmed">Confirmation State</label>
+  <select [(ngModel)]="comment.isConfirmed" name="isConfirmed">
+    <option [value]="true">Confirmed</option>
+    <option [value]="false">Not Confirmed</option>
+  </select>
+
+  <div>
+    <app-button
+      [buttonText]="'Save'"
+      (onButtonClick)="handleSaveClick()"
+    ></app-button>
+    <app-button
+      [buttonText]="'Cancel'"
+      (onButtonClick)="handleCancelClick()"
+    ></app-button>
+  </div>
+</form>

@@ -32,8 +32,8 @@ export class PostAddComponent {
   ) {
     this.userService.setUsers();
     this.users = this.userService.getUsers();
-    if(this.postService.getPosts().length === 0){
-       this.postService.setPosts();
+    if (this.postService.getPosts().length === 0) {
+      this.postService.setPosts();
     }
     this.posts = this.postService.getPosts();
   }

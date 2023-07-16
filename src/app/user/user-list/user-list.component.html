@@ -20,7 +20,7 @@
           [buttonText]="'Delete'"
           [id]="item.userId"
           (onButtonClick)="handleDeleteClick($event)"
-      >
+        >
         </app-button>
         <app-button
           [buttonText]="'Edit'"
@@ -30,33 +30,44 @@
       </td>
     </tr>
   </tbody>
-</table> <br>
-<div class="edit-section">
-<div class="pagination" *ngIf="totalPages > 0">
-  <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
-  <span>{{currentPage}} </span>
-  <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
-</div>
+</table>
+<br />
 
-<a routerLink="/useradd"><button>Add User</button></a>
-
-<form *ngIf="editMode">
-  <label for="username">Username</label>
-  <input type="text" [(ngModel)]="username" name="username" />
-  <label for="email">Email</label>
-  <input type="email" [(ngModel)]="email" name="email" />
-  <label for="creationDate">Creation Date</label>
-  <input type="date" [(ngModel)]="creationDate" name="creationDate" />
-  <label for="isActive">Activation State</label>
-  <select [(ngModel)]="isActive" name="isActive">
-    <option [value]="true">Active</option>
-    <option [value]="false">Inactive</option>
-  </select>
-
-  <div>
-    <button (click)="handleSaveClick()" type="button">Save</button>
-    <button (click)="handleCancelClick()" type="button">Cancel</button>
+<div class="bottom-section">
+  <div class="pagination" *ngIf="totalPages > 0">
+    <button [disabled]="currentPage === 1" (click)="previousPage()">
+      Previous
+    </button>
+    <span>{{ currentPage }} </span>
+    <button [disabled]="currentPage === totalPages" (click)="nextPage()">
+      Next
+    </button>
   </div>
-</form>
 
+  <app-button [buttonText]="'Add User'" routerLink="/useradd"></app-button>
+
+  <form *ngIf="editMode">
+    <label for="username">Username</label>
+    <input type="text" [(ngModel)]="username" name="username" />
+    <label for="email">Email</label>
+    <input type="email" [(ngModel)]="email" name="email" />
+    <label for="creationDate">Creation Date</label>
+    <input type="date" [(ngModel)]="creationDate" name="creationDate" />
+    <label for="isActive">Activation State</label>
+    <select [(ngModel)]="isActive" name="isActive">
+      <option [value]="true">Active</option>
+      <option [value]="false">Inactive</option>
+    </select>
+
+    <div>
+      <app-button
+        [buttonText]="'Save'"
+        (onButtonClick)="handleSaveClick()"
+      ></app-button>
+      <app-button
+        [buttonText]="'Cancel'"
+        (onButtonClick)="handleCancelClick()"
+      ></app-button>
+    </div>
+  </form>
 </div>

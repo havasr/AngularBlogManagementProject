@@ -32,7 +32,7 @@ export class UserService {
     return this.users.find((user) => user.email === email);
   }
 
-  userCount():number {
+  userCount(): number {
     return this.users.length;
   }
 
@@ -55,7 +55,7 @@ export class UserService {
       return false;
     } else if (
       this.users.find((user) => user.email === email.toLowerCase()) !==
-      undefined &&
+        undefined &&
       this.findUserByEmail(email.toLowerCase())!.userId !== id
     ) {
       return false;

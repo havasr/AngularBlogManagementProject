@@ -1,33 +1,45 @@
 <table>
-    <thead>
+  <thead>
     <tr>
-        <th>POST ID</th>
-        <th>TITLE</th>
-        <th>VIEW COUNT</th>
-        <th>CREATION DATE</th>
-        <th>PUBLICATION STATE</th>
+      <th>POST ID</th>
+      <th>TITLE</th>
+      <th>VIEW COUNT</th>
+      <th>CREATION DATE</th>
+      <th>IS PUBLISHED</th>
     </tr>
-</thead>
-<tbody>
-        <tr *ngFor="let item of pagedData">
-            <td>{{item.postId}}</td>
-            <td>{{item.title}}</td>
-            <td>{{item.viewCount}}</td>
-            <td>{{item.creationDate}}</td>
-           <td>{{item.isPublished}}</td>
-           <td class="button">
-           <app-button [buttonText]="'Detail'" [id]="item.postId"
-           (onButtonClick)="handleDetailClick($event)"></app-button>
-           <app-button [buttonText]="'Delete'" [id]="item.postId"
-           (onButtonClick)="handleDeleteClick($event)"></app-button></td>
-        </tr>
-</tbody>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of pagedData">
+      <td>{{ item.postId }}</td>
+      <td>{{ item.title }}</td>
+      <td>{{ item.viewCount }}</td>
+      <td>{{ item.creationDate }}</td>
+      <td>{{ item.isPublished }}</td>
+      <td class="button">
+        <app-button
+          [buttonText]="'Detail'"
+          [id]="item.postId"
+          (onButtonClick)="handleDetailClick($event)"
+        ></app-button>
+        <app-button
+          [buttonText]="'Delete'"
+          [id]="item.postId"
+          (onButtonClick)="handleDeleteClick($event)"
+        ></app-button>
+      </td>
+    </tr>
+  </tbody>
 </table>
+<div class="bottom-section">
+  <div class="pagination" *ngIf="totalPages > 0">
+    <button [disabled]="currentPage === 1" (click)="previousPage()">
+      Previous
+    </button>
+    <span>{{ currentPage }} </span>
+    <button [disabled]="currentPage === totalPages" (click)="nextPage()">
+      Next
+    </button>
+  </div>
 
-<div class="pagination" *ngIf="totalPages > 0">
-    <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
-    <span>{{currentPage}} </span>
-    <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+  <app-button [buttonText]="'Add Post'" [routerLink]="'/postadd'"></app-button>
 </div>
-
-<button [routerLink]="'/postadd'">Add Post<button>

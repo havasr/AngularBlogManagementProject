@@ -1,6 +1,9 @@
-.user-add{
-    display: flex;
-    justify-content: flex-start;
-    margin:10px 40px;
-    padding: 10px;
+.user-add {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 40px;
+  padding: 10px;
+  width: 50%;
 }

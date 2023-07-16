@@ -38,7 +38,8 @@ export class PostDetailComponent {
   ) {
     if (this.userService.getUsers().length === 0) this.userService.setUsers();
     else this.users = this.userService.getUsers();
-    if (this.categoryService.getCategories().length === 0) this.categoryService.setCategories();
+    if (this.categoryService.getCategories().length === 0)
+      this.categoryService.setCategories();
     else this.categories = this.categoryService.getCategories();
   }
 

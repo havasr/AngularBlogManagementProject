@@ -29,3 +29,29 @@ td:last-child {
   background-color: white;
   cursor: pointer;
 }
+
+.bottom-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 40px;
+}
+
+form {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 50px;
+}
+
+.pagination{
+  display: flex;
+  gap: 6px;
+    }
+  
+.pagination > button{
+    color: white;
+    background-color: var(--secondColor);
+    border-radius: 10px;
+      border: none;
+        }

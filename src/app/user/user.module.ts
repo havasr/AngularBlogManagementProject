@@ -6,20 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { AppModule } from '../app.module';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
-  declarations: [
-    UserListComponent,
-    UserAddComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    AppModule,
-    RouterModule
-  ],
-  exports: [
-    UserListComponent
-  ]
+  declarations: [UserListComponent, UserAddComponent],
+  imports: [CommonModule, FormsModule, AppModule, RouterModule],
+  exports: [UserListComponent],
 })
-export class UserModule { }
+export class UserModule {}

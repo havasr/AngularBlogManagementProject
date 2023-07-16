@@ -7,19 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppModule } from '../app.module';
 
-
-
 @NgModule({
   declarations: [
     CommentListComponent,
     CommentAddComponent,
-    CommentDetailComponent
+    CommentDetailComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    AppModule
-  ]
+  imports: [CommonModule, FormsModule, RouterModule, AppModule],
 })
-export class CommentsModule { }
+export class CommentsModule {}

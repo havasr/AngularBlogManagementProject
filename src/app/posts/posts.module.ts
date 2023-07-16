@@ -7,21 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppModule } from '../app.module';
 
-
 @NgModule({
-  declarations: [
-    PostListComponent,
-    PostAddComponent,
-    PostDetailComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule,
-    AppModule,
-  ],
-  exports: [
-    PostListComponent
-  ]
+  declarations: [PostListComponent, PostAddComponent, PostDetailComponent],
+  imports: [CommonModule, FormsModule, RouterModule, AppModule],
+  exports: [PostListComponent],
 })
-export class PostsModule { }
+export class PostsModule {}

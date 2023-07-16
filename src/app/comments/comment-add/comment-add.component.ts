@@ -49,7 +49,7 @@ export class CommentAddComponent {
       this.comment.creationDate === '' ||
       this.comment.comment === ''
     )
-      alert('Every section must be filled in.');
+      alert('Please fill in the empty sections.');
     else {
       this.comment.commentId =
         this.comments[this.comments.length - 1].commentId + 1;

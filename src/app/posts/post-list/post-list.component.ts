@@ -31,7 +31,7 @@ export class PostListComponent {
     this.router.navigate(['/postlist/', $event]);
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.pageChanged(this.currentPage);
   }
 
@@ -40,7 +40,7 @@ export class PostListComponent {
     const endIndex = startIndex + this.itemsPerPage;
     this.pagedData = this.posts.slice(startIndex, endIndex);
     this.currentPage = page;
-    if(this.pagedData.length === 0 && this.currentPage > 1){
+    if (this.pagedData.length === 0 && this.currentPage > 1) {
       this.previousPage();
     }
   }
