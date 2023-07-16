@@ -1,0 +1,126 @@
+<div *ngIf="comments.length > 0">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+        <ng-container matColumnDef="commentId">
+            <th mat-header-cell *matHeaderCellDef> Comment Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.commentId}} </td>
+        </ng-container>
+        <ng-container matColumnDef="postId">
+            <th mat-header-cell *matHeaderCellDef> Post Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.postId}} </td>
+        </ng-container>
+        <ng-container matColumnDef="userId">
+            <th mat-header-cell *matHeaderCellDef> User Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="comment">
+            <th mat-header-cell *matHeaderCellDef> Comment</th>
+            <td mat-cell *matCellDef="let element"> {{element.comment}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="creationDate">
+            <th mat-header-cell *matHeaderCellDef> Creation Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.creationDate | date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="isConfirmed">
+            <th mat-header-cell *matHeaderCellDef> Is isConfirmed </th>
+            <td mat-cell *matCellDef="let element"> {{element.isConfirmed ? 'Confirm' : 'Not Confirm'}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row-color"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>
+<form name="postForm" class="custom-form">
+    <div mat-dialog-content newgenPerfectScrollbar>
+        <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+            <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Title</mat-label>
+                    <input matInput [disabled]="!editMode" [(ngModel)]="post.title" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+            <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Content</mat-label>
+                    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" [disabled]="!editMode" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" [(ngModel)]="post.content" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+            <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>View Count</mat-label>
+                    <input matInput type="number" [(ngModel)]="post.viewCount" [disabled]="!editMode" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+            <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Creation Date</mat-label>
+                    <input matInput type="date" [(ngModel)]="post.creationDate" [disabled]="!editMode" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+            <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Publish State</mat-label>
+                    <select matNativeControl [(ngModel)]="post.isPublished" [disabled]="!editMode" [ngModelOptions]="{standalone: true}" name="isPublished">
+                        <option [value]="true"> Published </option>
+                        <option [value]="false">Notpublished</option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+            <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>User</mat-label>
+                    <select matNativeControl [(ngModel)]="post.userId" [disabled]="!editMode" name="user" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let user of users" [value]="user.userId">{{user.username}}</option>
+                    </select>
+
+
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+            <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                <mat-form-field appearance="outline" fxFlex="100">
+                    <mat-label>Categories</mat-label>
+                    <select matNativeControl [(ngModel)]="post.categoryId" [disabled]="!editMode" name="user" [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let category of categories" [value]="category.categoryId">{{category.name}}</option>
+                    </select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+                <button *ngIf="!editMode" mat-stroked-button color="warn" (click)="handleEditClick()" aria-label="Close dialog">
+                    <span>Edit</span>
+                </button>
+                <button *ngIf="editMode" mat-stroked-button color="warn" (click)="handleSaveClick()" aria-label="Close dialog">
+                    <span>Save</span>
+                </button>
+                <button class="ml-1" mat-stroked-button color="warn" (click)="handleDeleteClick()" aria-label="Close dialog">
+                    <span>Delete</span>
+                </button>
+                <button class="ml-1" mat-stroked-button color="primary" [routerLink]="'/postlist'" type="button">
+                    <span>
+                        Return Post List
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

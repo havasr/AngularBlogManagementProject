@@ -1,0 +1,90 @@
+<mat-card class="custom-mat-card">
+    <form name="postForm" class="center-text">
+        <div mat-dialog-content newgenPerfectScrollbar>
+            <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+                <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Comment</mat-label>
+                        <input matInput [(ngModel)]="comment.comment" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+                <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>User</mat-label>
+                        <select matNativeControl [(ngModel)]="comment.userId" name="user" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let user of users" [value]="user.userId">{{user.username}}</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+                <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Post</mat-label>
+                        <select matNativeControl [(ngModel)]="comment.postId" name="user" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let post of posts" [value]="post.postId">{{post.title}}</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+                <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Creation Date</mat-label>
+                        <input matInput type="date" [(ngModel)]="comment.creationDate" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px" class="mt-20">
+                <div fxFlex="50" fxLayout.xs="column" fxLayoutGap="4px">
+                    <mat-form-field appearance="outline" fxFlex="100">
+                        <mat-label>Confirmation State</mat-label>
+                        <select matNativeControl [(ngModel)]="comment.isConfirmed" [ngModelOptions]="{standalone: true}" name="isConfirmed">
+                            <option [value]="true"> Confirm </option>
+                            <option [value]="false">Not Confirm</option>
+                        </select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="end center">
+                <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-stroked-button color="warn" (click)="handleSaveClick()" aria-label="Close dialog">
+                        <span>Save</span>
+                    </button>
+                    <button class="ml-1" mat-stroked-button color="primary" (click)="handleCancelClick()" type="button">
+                        <span>
+                            Cancel
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</mat-card>
+
+<!-- <form>
+    <label for="comment">Comment</label>
+    <input type="text" [(ngModel)]="comment.comment" name= "comment" >
+    <label for="user">User</label>
+    <select [(ngModel)]="comment.userId" name="user">
+        <option *ngFor="let user of users" [value]="user.userId">{{user.username}}</option>
+    </select>
+    <label for="post">Post</label>
+    <select [(ngModel)]="comment.postId" name="post">
+        <option *ngFor="let post of posts" [value]="post.postId">{{post.title}}</option>
+    </select>
+    <label for="creationDate">Creation Date</label>
+    <input type="date" [(ngModel)]="comment.creationDate" name="creationDate">
+    <label for="isConfirmed">Confirmation State</label>
+    <select [(ngModel)]="comment.isConfirmed" name="isConfirmed">
+        <option [value]="true"> Confirmed </option>
+        <option [value]="false">Not Confirmed</option>
+    </select>
+    <div>
+        <button (click)="handleSaveClick()" type="button">Save</button>
+        <button (click)="handleCancelClick()" type="button">Cancel</button>
+    </div>
+</form> -->
