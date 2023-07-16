@@ -1,24 +1,62 @@
 <table class="table-container">
-  <thead>
+  <thead class="table-head">
     <tr>
-      <th>USERID</th>
+      <th>USER ID</th>
       <th>USERNAME</th>
       <th>EMAIL</th>
       <th>CREATION DATE</th>
-      <th>ISACTIVE</th>
+      <th>IS ACTIVE</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of users">
+    <tr *ngFor="let item of pagedData">
       <td>{{ item.userId }}</td>
       <td>{{ item.username }}</td>
       <td>{{ item.email }}</td>
-      <td>{{ item.creationDate | date}}</td>
+      <td>{{ item.creationDate | date }}</td>
       <td>{{ item.isActive }}</td>
-      <td>
-        <button>Edit</button>
-        <button (click)="handleDeleteClick(item.userId)">Delete</button>
+      <td class="button">
+        <app-button
+          [buttonText]="'Delete'"
+          [id]="item.userId"
+          (onButtonClick)="handleDeleteClick($event)"
+      >
+        </app-button>
+        <app-button
+          [buttonText]="'Edit'"
+          [id]="item.userId"
+          (onButtonClick)="handleEditClick($event)"
+        ></app-button>
       </td>
     </tr>
   </tbody>
-</table>
+</table> <br>
+<div class="edit-section">
+<div class="pagination" *ngIf="totalPages > 0">
+  <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+  <span>{{currentPage}} </span>
+  <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+</div>
+
+<a routerLink="/useradd"><button>Add User</button></a>
+
+<form *ngIf="editMode">
+  <label for="username">Username</label>
+  <input type="text" [(ngModel)]="username" name="username" />
+  <label for="email">Email</label>
+  <input type="email" [(ngModel)]="email" name="email" />
+  <label for="creationDate">Creation Date</label>
+  <input type="date" [(ngModel)]="creationDate" name="creationDate" />
+  <label for="isActive">Activation State</label>
+  <select [(ngModel)]="isActive" name="isActive">
+    <option [value]="true">Active</option>
+    <option [value]="false">Inactive</option>
+  </select>
+
+  <div>
+    <button (click)="handleSaveClick()" type="button">Save</button>
+    <button (click)="handleCancelClick()" type="button">Cancel</button>
+  </div>
+</form>
+
+</div>

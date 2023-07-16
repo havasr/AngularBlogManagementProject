@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;600&family=MuseoModerno:wght@200&display=swap");
+
+:root {
+  --firstColor: #dc3444;
+  --secondColor: #fbc304;
+  --thirdColor: #339363;
+  --forthColor: #6bdbf3;
+  --bgColor: #f8f7f7;
+  --textColor: #222823;
+  --primaryFont: "Comfortaa", cursive;
+  --secondaryFont: "MuseoModerno", cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  font-family: var(--primaryFont);
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}

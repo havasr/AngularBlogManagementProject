@@ -1,1 +1,19 @@
-<p>user-add works!</p>
+<form class="user-add">
+    <label for="username">Username</label>
+<input type="text" [(ngModel)]="user.username" name="username">
+<label for="email">Email</label>
+<input type="text" [(ngModel)]="user.email" name="email">
+<label for="creationDate">Creation Date</label>
+<input type="date" [(ngModel)]="user.creationDate" name="creationDate">
+<label for="isActive">Activation State</label>
+<select [(ngModel)]="user.isActive" name="isActive" >
+    <option [value]="true">Active</option>
+    <option [value]="false">Inactive</option>
+</select> <br>
+<div>
+    <button type="button" (click)="handleAddClick()">Add</button>
+    <button type="button" (click)="handleCancelClick()">Cancel</button>
+</div>
+
+
+</form>

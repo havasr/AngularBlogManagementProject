@@ -1,0 +1,24 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--primaryFont); 
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.right-nav {
+  display: flex;
+}
+
+.right-nav > a:focus {
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.1);
+}
+
+a {
+  text-decoration: none;
+  padding: 20px;
+  margin: 20px;
+}
+
